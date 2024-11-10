@@ -1,0 +1,124 @@
+machine Auction
+sees AuctionContext SystemContext
+refines System
+variables
+//Variables here
+
+activeBidders //The active bidders in the current auction
+
+topBidder //The top bidder in the current auction
+
+timer //Timer tracks auction duration and closes it when expired
+
+item //The item that is up for bidding
+
+topbid //The highest bid in the current auction
+
+initPrice //The minimum bidding price for bidders
+
+reservePrice //The minimum price that the seller is willing to accept for the item
+
+itemdesc //Description of the item
+
+time //The current time
+
+startTime //The precise time at the start of the auction
+
+endTime //The precise time at the end of the auction
+
+
+//TODO: make a bid an attribute like auction's
+invariants
+@typeof-initPrice: initPrice ∈ auctions →  ℕ1 //initPrice is a natural number that represents the initial price of the auction.
+
+@typeof-reservePrice: reservePrice ∈ auctions → ℕ1 //reservePrice is a natural number that represents the reserve price of the auction.
+
+@typeof-a: ∀a · a ∈ auctions ⇒ initPrice(a) < reservePrice(a) //For all auctions 'a', the initial price of 'a' is less than the reserve price of 'a'
+
+@typeof-activeBidders: activeBidders ⊆ logged //Active bidders is a subset of logged in bidders
+
+@typeof-topBidder: topBidder ⊆ activeBidders //The top bidder is a subset of active bidders
+
+@typeof-topbid: topbid ∈ ℕ1 ⇸ auctions //Top bid is a function from positive naturals to the auction
+
+@typeof-itemdesc: itemdesc ∈ STRING ⇸ auctions //itemdesc maps a string to the auction
+
+@typeof-timer: timer ⊆ ℕ1 //timer has to be a positive natural number
+
+@typeof-startTime: startTime ∈ 
+events
+
+
+event INITIALISATION then
+
+@init-initPrice:initPrice ≔ ∅ //Initialise init price to the empty set
+
+@init-reservePrice:reservePrice ≔ ∅ //Initialise the reserve price to the empty set
+
+@init-bidders:bidders ≔ ∅ //Initialise the bidders to the empty set
+
+@init-topBidder:topBidder ≔ ∅ //Initialise the topBidder to the empty set
+
+@init-itemdesc:itemdesc ≔ ∅ //Initialise the itemdesc to the empty set
+
+@init-timer:timer ≔ ∅ //Initialise the timer to the empty set
+
+@init-seller:seller ≔ ∅ //Initialise the seller to the empty set
+
+@init-startTime:startTime ≔ ∅ //Initialise the startTime to the empty set
+
+@init-endTime:endTime ≔ ∅ //Initialise the endTime to the empty set
+end
+
+//Creates an Auction 
+event CreateAuction
+
+any user item title newauction innitP where 
+@grd1: user ∈ logged //Checks if the user is in the set of logged users
+@grd2: 3 > penalty(user) //Checks that the user does not have more than 3 penalty points
+@grd3: item ∈ ITEM //Checks item is in the set of ITEM
+@grd4: title ∈ STRING //Checks that title is in the set of STRING
+@grd5: newauction ∈ AUCTION //Checks that the newauction is in the set of AUCTION
+then 
+@act1: auctions ≔ auctions ∪ {newauction} //Adds newauction to the set of auctions
+@act2: auctiontitle ≔ auctiontitle ∪ {newauction × title} //Adds the cross product of newauction and title to the set of auctiontitle
+@act3: auctionitem ≔ auctionitem ∪ {newauction × item} //Adds the cross product of newauction and item to the set of auctionitem
+
+end
+
+//Sets the start time and end time of the auction
+event setStartEndTime
+any startT endT where
+@grd1: startT ∈ ℕ1 ∪ {0} //Checks that startT is an element of positive natural numbers or 0
+@grd2: endT ∈ ℕ1 //Checks that endT is an element of the positive naturals
+@grd3: endT > startT //Checks that endT is greater than startT so that auction does not end immediately
+@grd4: time < startT 
+then
+@act1: startTime 
+end
+
+event StartAuction
+//to be finished
+end
+
+event BidAuction
+//to be finished
+end
+
+event CancelAuction
+//to be finished
+end
+
+event AuctionStatus
+//to be finished
+end
+
+event GiveFeedback
+//to be finished
+end
+
+event CloseAuction
+//to be finished
+end
+
+end

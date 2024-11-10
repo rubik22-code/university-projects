@@ -1,0 +1,17 @@
+machine User
+sees UserContext
+variables 
+penalty 
+password
+username
+
+invariants 
+@inv1: penalty ∈ {0,1,2,3}
+@inv2: password ∈ STRING
+@inv3: username ∈ STRING
+
+
+events 
+event 
+end
+

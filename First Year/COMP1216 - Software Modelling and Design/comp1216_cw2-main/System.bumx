@@ -1,0 +1,122 @@
+machine System
+sees SystemContext
+variables
+registered //Keeps track of the registered users
+
+logged //Keeps track of the logged in users 
+//TODO auctions might not be needed as we already have a AUTIONS set and two other variables
+auctions //Variable containing all auctions  
+
+feedback //Stores the feedback on individual users
+
+activeAuctions //Stores live auctions
+
+archivedAuctions //Stores auctions that have expired
+
+password //Stores users' passwords
+
+penalty //Stores users' penalty points
+
+sellers //Stores the sellers
+
+auctionTitle //Stores the auction title
+
+auctionItem //Stores the auction item
+
+auctionWinner //Stores the auction winner
+
+invariants
+@typeof-registered:registered ⊆ USERS //Registered users are a subset of USERS 
+
+@typeof-logged:logged ⊆ registered //Logged in users are a subset of registered
+
+@typeof-auctions:auctions ⊆ AUCTIONS //Auctions are a subset of AUCTIONS
+
+@typeof-password:password ∈ registered → PASSWORDS //Registered users have a password
+
+@typeof-penalty:penalty ∈ registered → 0‥3 //Registered users have penalty points
+
+@typeof-activeAuctions:activeAuctions ⊆ auctions //Active auctions are a subset of AUCTIONS
+
+@typeof-archivedAuctions:archivedAuctions ⊆ auctions //Archived auctions are a subset of AUCTIONS
+
+@inv-archivedAuctions:archivedAuctions ∩ activeAuctions = ∅ //The intersection of the archived and active auctions has to be empty as an auction can only be in one
+
+@typeof-auctionWinner:auctionWinner ∈ registered ⇸ archivedAuctions //The auction winner will be registered and will have archived auctions
+
+@typeof-auctionTitle:auctionTitle ∈ auctions ⇸ AUCTIONTITLE //The auction has a title of type AUCTIONTITLE
+
+@typeof-auctionItem:auctionItem ∈ auctions ↣ ITEM //Each auction has an item
+
+@typeof-feedback:feedback ∈ FEEDBACK ⇸ registered //Registered users can have feedback
+
+@typeof-sellers:sellers ∈ auctions → registered //Sellers will have auctions 
+
+events
+
+event INITIALISATION
+then
+	@init-registered:registered ≔ ∅ //There are no users that are registered at initialisation
+	
+	@init-logged:logged ≔ ∅ //There are no logged in users at initialisation
+	
+	@init-auctions:auctions ≔ ∅ //There are no auctions at initialisation
+	
+	@init-feedback:feedback ≔ ∅ //There is no feedback at initialisation
+	
+	@init-activeAuctions:activeAuctions ≔ ∅ //There are no active auctions
+	 
+	@init-archivedAuctions:archivedAuctions ≔ ∅ //There are no archived auctions at initialisation
+	
+	@init-password:password ≔ ∅ //There are no passwords at initialisation
+	
+	@init-penalty:penalty ≔ ∅ //There are no penalty points at initialisation
+	
+	@init-auctionWinner:auctionWinner ≔ ∅ //There are no action winners at initialisation
+	
+	@init-auctionTitle:auctionTitle ≔ ∅ //There are no auction titles at initialisation
+	
+	@init-acutionItem:auctionItem ≔ ∅ //There are no auction items at initialisation
+	
+	@init-sellers:sellers ≔ ∅ //There are no sellers at initialisation
+end
+
+event RegisterUser 
+any user passwordP where 
+@grd1:user ∈ USERS //User has to be a USER
+@grd2:user ∉ registered //User shouldn't already be registered
+@grd3:passwordP ∈ PASSWORDS //Password should be a password
+then
+@add-to-registered: registered ≔ registered ∪ {user} //User gets added to the registered users set
+@link-password: password(user) ≔ passwodP //The passwords gets linked to the user
+@link-penalty: penalty(user) ≔ 0 //The penalty points get linked to the user
+end
+
+event UserLogin
+any user passwordP where
+@grd1:user ∈ registered //User has to be registered
+@grd2:user ∉ logged //User shouldn't be already logged in
+@grd3:passwordP ∈ PASSWORDS //The password has to be a valid PASSWORD
+@check-password: password(user) = passwordP //Check if the password is correct
+then 
+@add-to-logged: logged ≔ logged ∪ {user} //Add the user to the logged users
+end
+
+event UserLogout
+any user where
+@grd1: user  ∈ registered //User has to be registered
+@grd2: user  ∈ logged //User has to be logged in 
+then
+@remove-from-logged: logged ≔ logged ∖ {user} //Remove user from the logged in users
+end	
+
+event ViewHistoryUser
+end
+
+//event ViewArchive 
+//any auct where 
+//@grd1:auct ∩ activeAuctions = ∅
+//@grd2:auct ∈ archivedAuctions
+//then 
+//@act1: 
+end

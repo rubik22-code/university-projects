@@ -1,0 +1,66 @@
+commit e9068c85960e57cc6532e6a7f9d5a1b4dcbc00d6
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Fri Mar 17 09:27:05 2023 +0000
+
+    Added report.tex
+
+commit 9e44897ff004f5b7054175a5ee476ad1e07a3dfc
+Merge: c9dc047 a97cf0b
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Thu Mar 16 10:22:57 2023 +0000
+
+    Resolved conflicts in python-plot-script.py
+
+commit c9dc047a0dddcd47e72e75ec57ca4b81551e1a96
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Thu Mar 16 10:02:43 2023 +0000
+
+    Initial creation of python-plot-script from working branch
+
+commit a97cf0b9239c6a45f689ec09427f3f7b0fb689cb
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Thu Mar 16 10:02:42 2023 +0000
+
+    Added new function to the python-plot-script from python-addon
+
+commit fdb87120160f1323d2096f927b5d275830a7b23e
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Wed Mar 15 10:40:20 2023 +0000
+
+    Added the rest of the tags to output the correct information
+
+commit d4e23574c79e6b376a216ed7580c859efc27ab4a
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Wed Mar 15 09:04:37 2023 +0000
+
+    Used while loop instead of for loop and array, using real values
+
+commit 3484cfc58cd4b7de6149d21fcf73b5a86c34842c
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Sat Mar 11 19:24:13 2023 +0000
+
+    Fixed unexpected EOF error on line 33
+
+commit 3bbca8fba6de38b30cc30854265f24a636bdc23d
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Fri Mar 10 13:01:11 2023 +0000
+
+    Added more checks to the script, establishing structure
+
+commit 050bb9d71c52ac036fe8d4e53dbcb8997456f1e7
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Fri Mar 3 12:06:15 2023 +0000
+
+    Adding more structure to the code so the conversion process works
+
+commit 7ec29802ae1f7181199743c8cbc01f8c0b067f45
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Fri Mar 3 09:35:50 2023 +0000
+
+    Establised folder with starting script
+
+commit eff6e625cfcf4793f99d031d9708599f324a50e0
+Author: pjk1g22 <pjk1g22@soton.ac.uk>
+Date:   Mon Feb 20 21:45:16 2023 +0000
+
+    Initial commit

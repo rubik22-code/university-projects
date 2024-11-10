@@ -1,0 +1,279 @@
+* {
+    /* Palette */
+    -start-color: rgb(105, 139, 218);
+    -end-color: rgb(187, 130, 243);
+
+    /* Tones */
+    -start-dark: derive(-start-color, -40%);
+    -start-darker: derive(-start-color, -70%);
+    -start-darkest: derive(-start-color, -80%);
+    -start-light: derive(-start-color, 40%);
+    -end-dark: derive(-end-color, -40%);
+    -end-darker: derive(-end-color, -70%);
+    -end-darkest: derive(-end-color, -80%);
+    -end-light: derive(-end-color, 40%);
+
+    /* Details */
+    -primary: linear-gradient(from 25% 25% to 100% 100%, -start-color, -end-color);
+    -primary-dark: linear-gradient(from 25% 25% to 100% 100%, -start-dark, -end-dark);
+    -primary-light: linear-gradient(from 25% 25% to 100% 100%, -start-light, -end-light);
+
+    /* Pane */
+    -background: linear-gradient(from 25% 25% to 100% 100%, -start-darker, -end-darker);
+    -background-dark: linear-gradient(from 25% 25% to 100% 100%, -start-darkest, -end-darkest);
+    -foreground: rgb(50, 50, 50);
+
+    /* Text */
+    -heading: rgb(255, 255, 255);
+    -subheading: rgb(255, 255, 255);
+    -body: rgb(255, 255, 255);
+}
+
+/* Classes */
+
+.heading {
+    -fx-fill: -heading;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+
+.color-header {
+    -fx-fill: -primary;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+
+.subheading {
+    -fx-fill: -subheading;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+
+Text {
+    -fx-fill: -body;
+    -fx-font-family: Arial;
+}
+
+Line {
+    -fx-stroke: -body;
+    -fx-stroke-width: 2px;
+}
+.separator {
+    -fx-stroke: -primary;
+    -fx-stroke-width: 1px;
+}
+
+.foreground_pane {
+    -fx-background-color: -background;
+    -fx-border-color: -primary;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, black, 20, 0, 0, 0);
+}
+.background_pane {
+    -fx-background-color: -background;
+}
+.transparent_pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.tab-pane {
+    -fx-background-color: transparent;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+.tab {
+    -fx-background-color: transparent;
+    -fx-border-color: -primary;
+    -fx-text-base-color: -primary;
+    -fx-border-radius: 15px;
+}
+.tab:selected {
+    -fx-border-color: -heading;
+    -fx-text-base-color: -heading;
+}
+.tab:hover {
+    -fx-text-base-color: -heading;
+}
+.tab-pane:focused .tab-header-area .headers-region .tab:selected .focus-indicator {
+    -fx-border-width: 0;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: -body;
+    -fx-text-fill: -body;
+    -fx-border-color: -primary;
+    -fx-border-radius: 10px;
+    -fx-font-family: "Arial";
+}
+
+.password-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: -body;
+    -fx-text-fill: -body;
+    -fx-border-color: -primary;
+    -fx-border-radius: 10px;
+    -fx-font-family: "Arial";
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary;
+    -fx-border-color: -primary;
+    -fx-border-radius: 15px;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+.button:hover {
+    -fx-text-fill: -primary-light;
+    -fx-border-color: -primary-light;
+    -fx-font-size: 15px;
+}
+.button:pressed {
+    -fx-text-fill: -primary-dark;
+    -fx-border-color: -primary-dark;
+}
+
+.help-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+    -fx-font-size: 22px;
+    -fx-text-fill: -primary;
+}
+.help-button:hover {
+    -fx-text-fill: -primary-light;
+    -fx-border-color: transparent;
+    -fx-font-size: 22px;
+}
+.help-button:pressed {
+    -fx-text-fill: -primary-dark;
+    -fx-border-color: transparent;
+}
+
+.upload-button {
+    -fx-font-size: 25px;
+}
+.upload-button:hover {
+    -fx-font-size: 25px;
+}
+
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary;
+    -fx-border-color: -primary;
+    -fx-border-radius: 15px;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+.combo-box:hover {
+    -fx-text-fill: -primary-light;
+    -fx-border-color: -primary-light;
+}
+
+.choice-box {
+    -fx-background-color: transparent;
+    -fx-border-color: -primary;
+    -fx-border-radius: 15px;
+}
+.choice-box > .label {
+    -fx-text-fill: -heading;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+.choice-box:hover {
+    -fx-text-fill: -primary-light;
+    -fx-border-color: -primary-light;
+}
+.choice-box > .open-button > .arrow {
+    -fx-background-color: white;
+}
+
+.check-box {
+    -fx-text-fill: -body;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+.check-box > .box {
+    -fx-background-color: transparent;
+    -fx-border-color: -primary;
+    -fx-border-radius: 3px;
+}
+.check-box:hover {
+    -fx-font-size: 15px;
+}
+.check-box:hover > .box {
+    -fx-border-color: -primary-light;
+}
+.check-box:selected > .box {
+    -fx-border-color: white;
+}
+.check-box > .mark {
+    -fx-background-color: -primary;
+}
+
+.tooltip {
+    -fx-font-size: 15px;
+    -fx-background-color: -background;
+    -fx-border-color: -primary;
+}
+
+.chart-plot-background {
+    -fx-opacity: 0%;
+}
+.chart-vertical-grid-lines {
+    -fx-opacity: 30%;
+}
+.chart-horizontal-grid-lines {
+    -fx-opacity: 30%;
+}
+.chart-legend {
+    -fx-background-color: transparent;
+}
+.chart-legend-item {
+    -fx-text-fill: -heading;
+}
+.axis-label {
+    -fx-text-fill: -subheading;
+}
+.chart-title {
+    -fx-text-fill: -heading;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+
+.date-picker {
+    -fx-background-color: transparent;
+}
+.date-picker > .text-field {
+    -fx-text-fill: -heading;
+    -fx-background-color: transparent;
+    -fx-border-color: -primary;
+    -fx-border-radius: 15px;
+    -fx-font-family: "Arial GEO";
+    -fx-font-weight: bold;
+}
+.date-picker > .arrow-button {
+    -fx-background-color: transparent;
+}
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+/* Nodes */
+
+#name_tag {
+    -fx-fill: -primary;
+}
+
+#add_campaign {
+    -fx-background-color: transparent;
+    -fx-text-base-color: -heading;
+    -fx-border-color: transparent;
+    -fx-font-size: 16px;
+}

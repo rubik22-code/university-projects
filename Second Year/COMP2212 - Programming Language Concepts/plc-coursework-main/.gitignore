@@ -1,0 +1,7 @@
+*.hi
+*.o
+*.txt
+*.exe
+/Grammar.hs
+/Tokens.hs
+/Gql

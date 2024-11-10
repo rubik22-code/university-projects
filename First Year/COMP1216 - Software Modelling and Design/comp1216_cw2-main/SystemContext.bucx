@@ -1,0 +1,9 @@
+context SystemContext
+sets
+USERS
+PASSWORDS
+AUCTIONTITLE
+ITEM
+AUCTIONS
+FEEDBACK
+end

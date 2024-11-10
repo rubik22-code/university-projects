@@ -1,0 +1,4 @@
+FIND (n)
+FROM "tasks.n4j"
+WHERE (n) <- [: {priority => 8}], (n:Worker)- [:* {available = true}], [pa:PossiblyAllocated]
+RETURN n, pa

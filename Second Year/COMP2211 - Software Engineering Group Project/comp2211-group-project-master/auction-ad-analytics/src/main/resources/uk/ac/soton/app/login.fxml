@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="340.0" minWidth="380.0" prefHeight="340.0" prefWidth="380.0" styleClass="background_pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.soton.app.controller.LoginController">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="260.0" minWidth="300.0" prefHeight="260.0" prefWidth="300.0" styleClass="foreground_pane">
+      <children>
+         <StackPane layoutY="5.0" prefHeight="260.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <Button fx:id="login_button" mnemonicParsing="false" onMouseClicked="#attemptLogin" prefHeight="41.0" prefWidth="170.0" text="Login" textAlignment="CENTER">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+                  <StackPane.margin>
+                     <Insets top="170.0" />
+                  </StackPane.margin>
+               </Button>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading" text="Ad Analytics" textAlignment="CENTER" wrappingWidth="240.0" StackPane.alignment="TOP_CENTER">
+                  <StackPane.margin>
+                     <Insets top="20.0" />
+                  </StackPane.margin>
+                  <font>
+                     <Font name="System Bold" size="26.0" />
+                  </font>
+               </Text>
+            </children>
+         </StackPane>
+         <PasswordField fx:id="password_box" onKeyPressed="#passwordKeyPress" prefHeight="36.0" prefWidth="280.0" promptText="Password" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="140.0" StackPane.alignment="CENTER">
+            <StackPane.margin>
+               <Insets bottom="-40.0" left="10.0" right="10.0" />
+            </StackPane.margin>
+         </PasswordField>
+         <TextField fx:id="username_box" onKeyPressed="#usernameKeyPress" prefHeight="36.0" prefWidth="300.0" promptText="Username" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+            <StackPane.margin>
+               <Insets bottom="70.0" left="10.0" right="10.0" />
+            </StackPane.margin>
+         </TextField>
+         <Line endX="50.0" layoutX="100.0" layoutY="40.0" strokeWidth="2.0" styleClass="line" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="39.5" />
+         <Line endX="50.0" layoutX="9.0" layoutY="50.0" strokeWidth="2.0" styleClass="line" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.5" />
+      </children>
+   </AnchorPane>
+   <Button fx:id="help_button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#openHelpDoc" prefHeight="40.0" prefWidth="40.0" styleClass="help-button" text="?" textAlignment="CENTER" StackPane.alignment="TOP_RIGHT">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+      <StackPane.margin>
+         <Insets />
+      </StackPane.margin>
+   </Button>
+</StackPane>

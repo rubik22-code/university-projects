@@ -1,0 +1,382 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{listings}
+
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{COMP1204: Data Management \\ Coursework Two: Databases}
+\author{Patrick Jfremov-Kustov \\ pjk1g22 \\ 33461104}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{The Relational Model}
+
+\subsection{EX1}
+
+Relation dataset(dateRep, day, month, year, cases, deaths, countriesAndTerritories, geoId, countryterritoryCode, popData2020, continentExp)
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+ \hline
+ \textbf{Column Name} & \textbf{Data Type} \\ 
+ \hline
+ dateRep & TEXT \\ 
+ \hline
+ day & INTEGER \\ 
+ \hline
+ month & INTEGER \\ 
+ \hline
+ year & INTEGER \\ 
+ \hline
+ cases & INTEGER \\ 
+ \hline
+ deaths & INTEGER \\ 
+ \hline
+ countriesAndTerritories & TEXT \\ 
+ \hline
+ geoId & TEXT \\ 
+ \hline
+ countryterritoryCode & TEXT \\ 
+ \hline
+ popData2020 & INTEGER \\ 
+ \hline
+ continentExp & TEXT \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\subsection{EX2}
+
+\begin{itemize}
+
+\item dateRep \(\rightarrow\)\ day
+
+\item dateRep \(\rightarrow\)\ month
+
+\item dateRep \(\rightarrow\)\ year
+
+\item day, month, year \(\rightarrow\)\ dateRep
+
+\item countriesAndTerritories \(\rightarrow\)\ geoId
+
+\item geoId \(\rightarrow\)\ countriesAndTerritories
+
+\item countriesAndTerritories \(\rightarrow\)\ countryterritoryCode
+
+\item countryterritoryCode \(\rightarrow\)\ countriesAndTerritories
+
+\item geoId \(\rightarrow\)\ continentExp
+
+\item geoId \(\rightarrow\)\ popData2020
+
+\item dateRep, countriesAndTerritories \(\rightarrow\)\ cases
+
+\item dateRep, countriesAndTerritories \(\rightarrow\)\ deaths
+
+Assumptions:
+
+Values not available for cases and deaths and null values are shown as zero, instead of leaving them blank. Nonetheless, this must be checked to ensure consistency. This could be influenced by future data such as reporting methods changing or virus variations happening.
+
+\end{itemize}
+
+\subsection{EX3}
+
+Potential candidate keys:
+
+\begin{itemize}
+    \item dateRep, countriesAndTerritories
+    \item dateRep, geoId
+    \item dateRep, countryterritoryCode
+    \item day, month, year, countriesAndTerritories
+    \item day, month, year, geoId
+    \item day, month, year, countryterritoryCode
+\end{itemize}
+
+\subsection{EX4}
+
+The composite key of dateRep and geoId, because out of countriesAndTerritories, geoId and countryterritoryCode, geoId represents the unique identifier in the shortest way out of all attributes.
+
+\section{Normalisation}
+
+\subsection{EX5}
+
+\subsubsection{Partial key dependencies:}
+
+\begin{itemize}
+    \item day, month, and year dependent on dateRep
+    
+    \item countriesAndTerritories, continentExp, countryterritoryCode and popData2020 dependent on geoId
+\end{itemize}
+
+\subsubsection{Additional relations:}
+
+\begin{itemize}
+    \item dataset(dateRep, geoId, day, month, year)
+
+    \item dataset(dateRep, geoId, countriesAndTerritories, continentExp, countryterritoryCode, popData2020)
+\end{itemize}
+
+\subsection{EX6}
+
+\subsubsection{Date relation}
+
+Date (\underline{dateRep}, day, month, year)
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Field Name} & \textbf{Data Type} \\ \hline
+dateRep & TEXT \\ \hline
+day & INTEGER \\ \hline
+month & INTEGER \\ \hline
+year & INTEGER \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Cases relation}
+
+Cases (\underline{dateRep, geoID}, cases, deaths)
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Field Name} & \textbf{Data Type} \\ \hline
+dateRep & TEXT \\ \hline
+geoId & TEXT \\ \hline
+cases & INTEGER \\ \hline
+deaths & INTEGER \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Country relation}
+
+Country (\underline{geoId}, countriesAndTerritories, continentExp, countryterritoryCode, popData2020)
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Field Name} & \textbf{Data Type} \\ \hline
+geoId & TEXT \\ \hline
+countriesAndTerritories & TEXT \\ \hline
+continentExp & TEXT \\ \hline
+countryterritoryCode & TEXT \\ \hline
+popData2020 & INTEGER \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Explanation:}
+
+The original relation had partial dependencies listed above, where the attributes were dependent on only part of the primary key. I decomposed the relation into three new relations: Date and Country.
+
+Then, I identified the new relations with their composite key, fields, and types. This allowed us to achieve 2NF by removing both redundancy and inconsistency from the original relation (dataset.csv).
+
+\subsection{EX7}
+
+There is one transitive dependency in the Country table whereby the popData2020 is dependent on any of the other fields in the relation because you won't find a unique record using that field alone.
+
+\subsection{EX8}
+
+In order to make the data set from 2NF to 3NF, we must remove the transitive dependency in the Country table where the difference is shown below.
+
+\subsubsection{Original Country relation}
+
+Country (\underline{geoId}, countriesAndTerritories, continentExp, countryterritoryCode, popData2020)
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Field Name} & \textbf{Data Type} \\ \hline
+geoId & TEXT \\ \hline
+countriesAndTerritories & TEXT \\ \hline
+continentExp & TEXT \\ \hline
+countryterritoryCode & TEXT \\ \hline
+popData2020 & INTEGER \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Amended Country relation}
+
+Country (\underline{geoId, countriesAndTerritories, continentExp, countryterritoryCode}, popData2020)
+
+\begin{center}
+\begin{tabular}{ |c|c| }
+\hline
+\textbf{Field Name} & \textbf{Data Type} \\ \hline
+geoId & TEXT \\ \hline
+countriesAndTerritories & TEXT \\ \hline
+continentExp & TEXT \\ \hline
+countryterritoryCode & TEXT \\ \hline
+popData2020 & INTEGER \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection{EX9}
+
+This is already in Boyce-Codd Normal Form because there is no longer any redundant data in any of the relations. The reason for this is because every field in the relations can be uniquely identified by other fields.
+
+\section{Modelling}
+
+\subsection{EX10}
+
+I downloaded the Precompiled Binaries for Windows from the sqllite website (https://www.sqlite.org/download.html). Then I opened Command Prompt on Windows and located to the file, followed by entering "sqlite3" to access the application. Since it doesn't exist yet, I used ".open coronavirus.db" to create a new databse file. I used "mode .csv" so that sqlite will recongise the imported CSV file. To import it, I used ".import dataset.csv dataset". This creates SQL statements (including CREATE and INSERT) that is used to later create the database. Then I used ".output dataset.sql" to output the SQL statements required to create the table and then ".dump" which then fills the file with these statements. Lastly I ran "sqlite3 coronavirus.db \textless\ dataset.sql" on the empty coronavirus.db that populates the dataset table.
+
+\subsection{EX11}
+
+I created a new file by using ".open ex11.sql" to write the set of SQL statements.
+
+Then I wrote this code:
+
+\begin{verbatim}
+CREATE TABLE date (
+    dateRep TEXT NOT NULL,
+    day INTEGER,
+    month INTEGER,
+    year INTEGER,
+    PRIMARY KEY (dateRep)
+);
+
+CREATE TABLE cases (
+    dateRep TEXT NOT NULL,
+    geoId TEXT NOT NULL,
+    cases INTEGER,
+    deaths INTEGER,
+    PRIMARY KEY (dateRep, geoId),
+
+    FOREIGN KEY (dateRep)
+       REFERENCES date (dateRep)
+);
+
+CREATE TABLE country (
+    geoId TEXT NOT NULL,
+    countriesAndTerritories TEXT NOT NULL,
+    continentExp TEXT NOT NULL,
+    countryterritoryCode TEXT NOT NULL,
+    popData2020 INTEGER,
+    PRIMARY KEY (geoId, countriesAndTerritories, continentExp, countryterritoryCode),
+
+    FOREIGN KEY (geoId)
+       REFERENCES country (geoId)
+);
+\end{verbatim}
+
+I then used .open coronavirus.db" followed by ".output dataset2.sql" followed by ".dump" to insert the values and create the tables. Lastly I ran "sqlite3 coronavirus.db \textless\ dataset2.sql" on the coronavirus.db that populates the dataset table alongside having empty tables.
+
+\subsection{EX12}
+
+I created a new file by using ".open ex12.sql" to write the set of SQL statements.
+
+Then I wrote this code:
+
+\begin{verbatim}
+INSERT OR IGNORE INTO date (dateRep, day, month, year)
+SELECT DISTINCT dateRep, day, month, year FROM dataset;
+
+INSERT OR IGNORE INTO cases (dateRep, geoId, cases, deaths)
+SELECT DISTINCT dateRep, geoId, cases, deaths from dataset;
+
+INSERT OR IGNORE INTO country (geoId, countriesAndTerritories, continentExp, countryterritoryCode, popData2020)
+SELECT DISTINCT geoId, countriesAndTerritories, continentExp, countryterritoryCode, popData2020 from dataset;
+\end{verbatim}
+
+I then used .open coronavirus.db" followed by ".output dataset3.sql" followed by ".dump" to insert the values and create the tables. Lastly I ran "sqlite3 coronavirus.db \textless\ dataset3.sql" on the coronavirus.db that populates the dataset alongside the different, separate tables.
+
+\subsection{EX13}
+
+I deleted the coronavirus.db and ran the three commands to populate the database successfully.
+
+\section{Querying}
+
+\subsection{EX14}
+
+I created a new file by using ".open ex14.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT SUM(cases) AS total_cases, SUM(deaths) AS total_deaths
+FROM cases;
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex14.sql" that returned the required results.
+
+\subsection{EX15}
+
+I created a new file by using ".open ex15.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT cases.dateRep, cases.cases
+FROM cases
+INNER JOIN country ON cases.geoId = country.geoId
+WHERE country.geoId = 'UK'
+ORDER BY DATE(cases.dateRep) ASC;
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex15.sql" that returned the required results.
+
+\subsection{EX16}
+
+I created a new file by using ".open ex16.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT cases.geoId, cases.dateRep, cases.cases, cases.deaths
+FROM cases
+INNER JOIN country on cases.geoId = country.geoId
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex16.sql" that returned the required results, organised by date first.
+
+\subsection{EX17}
+
+I created a new file by using ".open ex17.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT country.countriesAndTerritories,
+       ROUND(ROUND(SUM(cases.cases) * 100, 2) / country.popData2020, 2),
+       ROUND(ROUND(SUM(cases.deaths) * 100, 2) / country.popData2020, 2)
+FROM cases
+INNER JOIN country on cases.geoId = country.geoId
+GROUP BY country.geoId
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex17.sql" that returned the required results.
+
+\subsection{EX18}
+
+I created a new file by using ".open ex18.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT
+    country.countriesAndTerritories,
+    ROUND((ROUND(SUM(cases.deaths), 2) / SUM(cases.cases)) * 100, 2) AS percentage_of_death
+FROM cases
+INNER JOIN country ON cases.geoId = country.geoId
+GROUP BY country.countriesAndTerritories
+ORDER BY percentage_of_death DESC
+LIMIT 10;
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex18.sql" that returned the required results.
+
+\subsection{EX19}
+
+I created a new file by using ".open ex19.sql" to write the SQL query.
+
+\begin{verbatim}
+SELECT cases.dateRep,
+    SUM(cases.cases) OVER (ROWS UNBOUNDED PRECEDING),
+	SUM(cases.deaths) OVER (ROWS UNBOUNDED PRECEDING)
+FROM cases
+INNER JOIN date ON date.dateRep = cases.dateRep
+INNER JOIN country ON country.geoId = cases.geoId
+WHERE cases.geoId = 'UK'
+ORDER BY year,month,day;
+\end{verbatim}
+
+Then I ran "sqlite3 coronavirus.db \textless\ ex19.sql" that returned the required results.
+
+\end{document}

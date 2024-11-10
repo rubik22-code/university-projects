@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1280.0" styleClass="background_pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.soton.app.controller.DashboardController">
+   <AnchorPane fx:id="main_window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1260.0" styleClass="transparent_pane">
+      <children>
+         <Text layoutX="19.0" layoutY="44.65750694274902" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading" text="Hello," AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="13.0">
+            <font>
+               <Font name="Arial MT Black" size="35.0" />
+            </font>
+         </Text>
+         <Text fx:id="name_tag" layoutX="146.0" layoutY="44.5205078125" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading" text="USER_NAME" AnchorPane.leftAnchor="116.0" AnchorPane.topAnchor="13.0">
+            <font>
+               <Font name="Arial MT Black" size="35.0" />
+            </font>
+         </Text>
+            <AnchorPane layoutX="4.0" layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="700.0" styleClass="foreground_pane" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <children>
+               <AnchorPane fx:id="dashboard_view" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="420.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="105.0">
+                  <children>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Impressions" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="impressions" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="impression_toggle" mnemonicParsing="false" onAction="#toggleMetric" selected="true" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="20.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Clicks" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="clicks" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="click_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="20.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Uniques" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="uniques" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="uniques_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="116.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Bounces" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="bounces" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="bounces_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="116.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Conversions" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="conversions" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="conversions_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="116.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Cost" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="total_cost" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="cost_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="212.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CTR" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="ctr" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="ctr_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="212.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CPA" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="cpa" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="cpa_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="212.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CPC" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="cpc" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="cpc_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="308.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CPM" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="cpm" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="cpm_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                     <StackPane prefHeight="65.0" prefWidth="220.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="308.0">
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Bounce Rate" StackPane.alignment="TOP_LEFT">
+                              <font>
+                                 <Font name="System Bold" size="29.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets left="30.0" />
+                              </StackPane.margin>
+                           </Text>
+                           <Text fx:id="bounce_rate" strokeType="OUTSIDE" strokeWidth="0.0" text="0" StackPane.alignment="BOTTOM_LEFT">
+                              <font>
+                                 <Font size="23.0" />
+                              </font>
+                           </Text>
+                           <CheckBox fx:id="bounce_rate_toggle" mnemonicParsing="false" onAction="#toggleMetric" StackPane.alignment="TOP_LEFT">
+                              <StackPane.margin>
+                                 <Insets top="11.0" />
+                              </StackPane.margin>
+                           </CheckBox>
+                        </children>
+                     </StackPane>
+                  </children>
+               </AnchorPane>
+               <Text fx:id="summary_header" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Your Summary" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="60.0">
+                  <font>
+                     <Font name="System Bold" size="34.0" />
+                  </font>
+               </Text>
+               <TabPane fx:id="campaign_list" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="490.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" />
+                  <Line endX="598.0" layoutX="115.0" layoutY="50.0" startX="-100.0" strokeWidth="2.0" styleClass="separator" AnchorPane.bottomAnchor="488.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0" />
+               <Button fx:id="uploadButton" mnemonicParsing="false" onMouseClicked="#uploadCampaign" prefHeight="60.0" prefWidth="140.0" styleClass="upload-button" text="Upload Campaign" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="250.0" />
+               </children>
+            </AnchorPane>
+            <StackPane fx:id="chart_node" layoutX="738.0" layoutY="13.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="527.0" styleClass="foreground_pane" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="733.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <children>
+               <LineChart fx:id="line_chart" animated="false" prefHeight="511.0" prefWidth="511.0" title="Campaign Trends" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" StackPane.alignment="CENTER">
+                 <xAxis>
+                   <CategoryAxis side="BOTTOM" />
+                 </xAxis>
+                 <yAxis>
+                   <NumberAxis forceZeroInRange="false" side="LEFT" />
+                 </yAxis>
+               </LineChart>
+               <BarChart fx:id="cost_histogram" animated="false" barGap="2.0" title="Campaign Click Costs" visible="false">
+                 <xAxis>
+                   <CategoryAxis side="BOTTOM" />
+                 </xAxis>
+                 <yAxis>
+                   <NumberAxis side="LEFT" />
+                 </yAxis>
+               </BarChart>
+               <ImageView fx:id="loading_wheel" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" visible="false" StackPane.alignment="CENTER">
+                  <viewport>
+                     <Rectangle2D height="800.0" width="800.0" />
+                  </viewport>
+                  <effect>
+                     <GaussianBlur />
+                  </effect>
+               </ImageView>
+               </children>
+            </StackPane>
+         <Button layoutX="5.0" layoutY="623.0" mnemonicParsing="false" onAction="#openBounceDefinition" prefHeight="35.0" prefWidth="140.0" text="Define Bounce" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+         <Button fx:id="histogram_toggle" layoutX="1071.0" layoutY="612.0" mnemonicParsing="false" onAction="#toggleHistogram" prefHeight="35.0" prefWidth="180.0" text="Cost Histogram" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         <Button layoutX="10.0" layoutY="625.0" mnemonicParsing="false" onAction="#openFilters" prefHeight="35.0" prefWidth="100.0" text="Filters" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="350.0" />
+         <Button layoutX="970.0" layoutY="625.0" mnemonicParsing="false" onAction="#openTimeSettings" prefHeight="35.0" prefWidth="130.0" text="Time Settings" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="200.0" />
+         <Button fx:id="copyButton" layoutX="140.0" layoutY="615.0" mnemonicParsing="false" onAction="#openCopy" prefHeight="35.0" prefWidth="110.0" text="Compare" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="290.0" />
+         <Button fx:id="exportButton" layoutX="271.0" layoutY="619.0" mnemonicParsing="false" onAction="#openExportWindow" prefHeight="35.0" prefWidth="110.0" text="Export" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" />
+         <Button fx:id="userButton" layoutX="300.0" layoutY="625.0" mnemonicParsing="false" onAction="#openUserManager" prefHeight="35.0" prefWidth="140.0" text="Manage Users" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="420.0" />
+      </children>
+      <StackPane.margin>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </StackPane.margin>
+   </AnchorPane>
+   <Pane fx:id="shade_window" opacity="0.2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" visible="false" />
+   <AnchorPane fx:id="bounce_window" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" styleClass="foreground_pane" visible="false" StackPane.alignment="CENTER">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Bounce Definition" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onAction="#applyBounceDefinition" prefHeight="50.0" prefWidth="200.0" text="Apply Changes" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+         <Text layoutX="20.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Pages Viewed:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="80.0">
+            <font>
+               <Font size="29.0" />
+            </font>
+         </Text>
+         <Text layoutX="20.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="The number of pages that need to be viewed in order to consider a user engaged." wrappingWidth="460.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="125.0">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Text>
+         <Text layoutX="20.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Time Viewed:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="200.0">
+            <font>
+               <Font size="29.0" />
+            </font></Text>
+         <Text layoutX="237.0" layoutY="382.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="(Changes to bounce definition are campaign-specific)" textAlignment="CENTER" wrappingWidth="460.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <font>
+               <Font size="14.0" />
+            </font></Text>
+         <Text layoutX="30.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="The number of minutes that a user needs to view the page for to be considered engaged." wrappingWidth="460.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="245.0">
+            <font>
+               <Font size="17.0" />
+            </font>
+         </Text>
+         <Slider fx:id="page_view_def" blockIncrement="1.0" layoutX="271.0" layoutY="92.0" majorTickUnit="20.0" max="20.0" minorTickCount="1" prefHeight="16.0" prefWidth="210.0" value="1.0" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0" />
+         <Slider fx:id="time_view_def" blockIncrement="5.0" layoutX="280.0" layoutY="100.0" majorTickUnit="60.0" max="60.0" minorTickCount="5" prefHeight="16.0" prefWidth="210.0" value="5.0" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="210.0" />
+         <Text fx:id="time_view_deftxt" layoutX="216.0" layoutY="225.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="5" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="203.0">
+            <font>
+               <Font name="System Bold" size="25.0" />
+            </font>
+         </Text>
+         <Text fx:id="page_view_deftxt" layoutX="225.0" layoutY="240.0" opacity="0.75" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="1" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="83.0">
+            <font>
+               <Font name="System Bold" size="25.0" />
+            </font>
+         </Text>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="time_window" layoutX="400.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="foreground_pane" visible="false">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Time Settings" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onAction="#applyTimeSettings" prefHeight="50.0" prefWidth="200.0" text="Apply Changes" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+         <Text layoutX="237.0" layoutY="382.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="(Changes to time settings are campaign-specific)" textAlignment="CENTER" wrappingWidth="360.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <DatePicker fx:id="periodOriginPicker" editable="false" layoutX="12.0" layoutY="87.0" prefHeight="35.0" prefWidth="460.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="145.0" />
+         <Text layoutX="30.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Period Start Date" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="95.0">
+            <font>
+               <Font name="System Bold" size="29.0" />
+            </font>
+         </Text>
+         <Text layoutX="30.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Interval" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="295.0">
+            <font>
+               <Font name="System Bold" size="29.0" />
+            </font>
+         </Text>
+         <ChoiceBox fx:id="intervalPicker" layoutX="20.0" layoutY="232.0" prefHeight="35.0" prefWidth="460.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="345.0" />
+         <Text layoutX="30.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Period End Date" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="195.0">
+            <font>
+               <Font name="System Bold" size="29.0" />
+            </font>
+         </Text>
+         <DatePicker fx:id="periodEndPicker" editable="false" layoutX="30.0" layoutY="155.0" prefHeight="35.0" prefWidth="460.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="245.0" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="filter_window" layoutX="400.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" styleClass="foreground_pane" visible="false">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Filters" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onAction="#applyFilterChanges" prefHeight="50.0" prefWidth="200.0" text="Apply Changes" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" />
+         <Text layoutX="237.0" layoutY="382.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="(Changes to filters are campaign-specific)" textAlignment="CENTER" wrappingWidth="760.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <Text layoutX="30.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Gender" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <Text layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Age" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <Text layoutX="230.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Income" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <Text layoutX="430.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Context" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <CheckBox fx:id="filterMale" layoutX="20.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Male" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="140.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterFemale" layoutX="30.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Female" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="170.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterLT25" layoutX="30.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="&lt;25" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="140.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filter25to34" layoutX="230.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="25-34" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="170.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filter35to44" layoutX="230.0" layoutY="185.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="35-44" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="200.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filter45to54" layoutX="230.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="45-54" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="230.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterGT54" layoutX="230.0" layoutY="255.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="&gt;54" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="260.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterLow" layoutX="230.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Low" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="140.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterMedium" layoutX="430.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Medium" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="170.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterHigh" layoutX="430.0" layoutY="180.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="High" AnchorPane.leftAnchor="420.0" AnchorPane.topAnchor="200.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterNews" layoutX="430.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="News" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="140.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterShopping" layoutX="630.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Shopping" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="170.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterSocialMedia" layoutX="630.0" layoutY="180.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Social Media" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="200.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterBlog" layoutX="630.0" layoutY="210.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Blog" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="230.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterHobbies" layoutX="630.0" layoutY="240.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Hobbies" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="260.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+         <CheckBox fx:id="filterTravel" layoutX="630.0" layoutY="270.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Travel" AnchorPane.leftAnchor="620.0" AnchorPane.topAnchor="290.0">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </CheckBox>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="export_window" layoutX="400.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" styleClass="foreground_pane" visible="false">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Export Campaign" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onAction="#closeExportWindow" prefHeight="50.0" prefWidth="200.0" text="Close" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+         <Button layoutX="150.0" layoutY="230.0" mnemonicParsing="false" onAction="#exportGraph" prefHeight="40.0" prefWidth="200.0" text="Export Graph (.png)" textAlignment="CENTER" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="105.0" />
+         <Button layoutX="90.0" layoutY="130.0" mnemonicParsing="false" onAction="#exportSummary" prefHeight="40.0" prefWidth="200.0" text="Export Select Graph Data (.csv)" textAlignment="CENTER" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="165.0" />
+         <Button layoutX="90.0" layoutY="190.0" mnemonicParsing="false" onAction="#printCampaign" prefHeight="40.0" prefWidth="200.0" text="Print Current View" textAlignment="CENTER" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="225.0" />
+      </children>
+   </AnchorPane>
+   <Button fx:id="help_button" mnemonicParsing="false" onMouseClicked="#openHelpDoc" prefHeight="40.0" prefWidth="40.0" styleClass="help-button" text="?" textAlignment="CENTER" StackPane.alignment="TOP_RIGHT">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+      <StackPane.margin>
+         <Insets right="2.0" top="2.0" />
+      </StackPane.margin>
+   </Button>
+   <Button fx:id="logout_button" layoutX="1250.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="20.0" prefWidth="120.0" text="Logout" textAlignment="CENTER" StackPane.alignment="TOP_RIGHT">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <StackPane.margin>
+         <Insets right="52.0" top="9.0" />
+      </StackPane.margin>
+   </Button>
+   <AnchorPane fx:id="user_window" layoutX="250.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="foreground_pane" visible="false">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="User Management" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#closeUserManager" prefHeight="40.0" prefWidth="200.0" text="Close" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="20.0" />
+         <Text opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="(All account creation / deletion actions are immediate)" textAlignment="RIGHT" wrappingWidth="580.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <Text layoutX="30.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Add User" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <Text layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="Delete User" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font>
+         </Text>
+         <PasswordField fx:id="addPassword" prefHeight="40.0" prefWidth="100.0" promptText="Password" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="190.0" />
+         <TextField fx:id="addUsername" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" promptText="Username" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="135.0" />
+         <TextField fx:id="deleteUsername" layoutX="35.0" layoutY="145.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" promptText="Username" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="135.0" />
+         <Button layoutX="240.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#deleteUser" prefHeight="40.0" prefWidth="200.0" text="Delete User" textAlignment="CENTER" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="190.0" />
+         <Button layoutX="335.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#addUser" prefHeight="40.0" prefWidth="200.0" text="Add User" textAlignment="CENTER" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="280.0" />
+         <CheckBox fx:id="isEditor" layoutX="25.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" text="Editorial Permissions" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="325.0" AnchorPane.topAnchor="240.0" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="password_window" layoutX="350.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" styleClass="foreground_pane" visible="false">
+      <children>
+         <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="color-header" text="Change Password" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+            <font>
+               <Font name="System Bold" size="40.0" />
+            </font>
+         </Text>
+         <Button layoutX="124.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#closePasswordChange" prefHeight="40.0" prefWidth="200.0" text="Close" textAlignment="CENTER" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="20.0" />
+         <Text opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="body" text="(Password change will take immediate effect)" textAlignment="RIGHT" wrappingWidth="430.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <PasswordField fx:id="newPassword" prefHeight="40.0" prefWidth="100.0" promptText="New Password" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="160.0" />
+         <Button layoutX="335.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="40.0" prefWidth="200.0" text="Change" textAlignment="CENTER" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="280.0" />
+         <PasswordField fx:id="oldPassword" layoutX="35.0" layoutY="200.0" prefHeight="40.0" prefWidth="100.0" promptText="Old Password" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="100.0" />
+         <PasswordField fx:id="confirmPassword" layoutX="35.0" layoutY="170.0" prefHeight="40.0" prefWidth="100.0" promptText="Confirm Password" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="220.0" />
+      </children>
+   </AnchorPane>
+   <Button fx:id="change_password_button" layoutX="1118.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#openPasswordChange" prefHeight="20.0" prefWidth="170.0" text="Change Password" textAlignment="CENTER" StackPane.alignment="TOP_RIGHT">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <StackPane.margin>
+         <Insets right="180.0" top="9.0" />
+      </StackPane.margin>
+   </Button>
+</StackPane>

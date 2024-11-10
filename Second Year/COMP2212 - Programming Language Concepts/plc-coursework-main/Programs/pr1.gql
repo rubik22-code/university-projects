@@ -1,0 +1,4 @@
+FIND (n)
+FROM "access.n4j"
+WHERE (n:Visitor) OR n.age <= 25
+RETURN n.id, n.age, n.label
